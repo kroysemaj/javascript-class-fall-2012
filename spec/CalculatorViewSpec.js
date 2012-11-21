@@ -10,9 +10,11 @@ describe('Calculator view', function () {
         container.append($("<button id='btn1' class='verbatim'>1</button>"));
         container.append($("<button id='btn2' class='verbatim'>2</button>"));
         container.append($("<button id='btn3' class='verbatim'>3</button>"));
+        container.append($("<button id='btn9' class='verbatim'>9</button>"));
         container.append($("<button id='btnplus' class='operator' data-operator='add'>+</button>"));
         container.append($("<button id='btnminus' class='operator' data-operator='subtract'>-</button>"));
         container.append($("<button id='btnmultiply' class='operator' data-operator='multiply'>x</button>"));
+        container.append($("<button id='btndivide' class='operator' data-operator='divide'>/</button>"));
         container.append($("<button id='btnequal' class='equal'>=</button>"));
         container.append($("<button id='btnperiod' class='verbatim'>.</button>"));
         container.append($("<button id='btnclear' class='clear'>C</button>"));
@@ -125,6 +127,17 @@ describe('Calculator view', function () {
         calculator.multiply.andReturn("9");
         container.find('#btn3').click();
         container.find('#btnmultiply').click();
+        container.find('#btn3').click();
+        container.find('#btnequal').click();
+
+        var displayText = container.find('.display').val();
+        expect(displayText).toBe('9');
+    });
+    
+    it('can divide nine by three', function () {
+        calculator.multiply.andReturn("3");
+        container.find('#btn9').click();
+        container.find('#btnmdivide').click();
         container.find('#btn3').click();
         container.find('#btnequal').click();
 

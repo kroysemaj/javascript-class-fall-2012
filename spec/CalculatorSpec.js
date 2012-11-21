@@ -17,5 +17,12 @@ describe('Calculator', function () {
         expect(actual).toBe(9);
     });
     
+    it('can divide 9 by 3', function () {
+        var calculator = new Calculator();
+        var actual = calculator.divide(9, 3);
+        expect(actual).toBe(3);
+    });
+       
+    
     
 });
