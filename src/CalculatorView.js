@@ -29,7 +29,6 @@ CalculatorView.prototype.init = function (c) {
     });
 
     wrapper.find('button.equal').click(jQuery.proxy(function (ev) {
-        debugger;
         var newValue = this.calculator[operator](Number(storage), Number(display.val()));
         display.val(newValue);
     }, this));

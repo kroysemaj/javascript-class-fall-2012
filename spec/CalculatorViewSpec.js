@@ -12,11 +12,12 @@ describe('Calculator view', function () {
         container.append($("<button id='btn3' class='verbatim'>3</button>"));
         container.append($("<button id='btnplus' class='operator' data-operator='add'>+</button>"));
         container.append($("<button id='btnminus' class='operator' data-operator='subtract'>-</button>"));
+        container.append($("<button id='btnmultiply' class='operator' data-operator='multiply'>x</button>"));
         container.append($("<button id='btnequal' class='equal'>=</button>"));
         container.append($("<button id='btnperiod' class='verbatim'>.</button>"));
         container.append($("<button id='btnclear' class='clear'>C</button>"));
 
-        calculator = jasmine.createSpyObj('description goes here', ['add', 'subtract']);
+        calculator = jasmine.createSpyObj('description goes here', ['add', 'subtract', 'multiply']);
 
         var calculatorView = new CalculatorView(calculator);
         calculatorView.init('.calculator');
@@ -117,5 +118,17 @@ describe('Calculator view', function () {
 
         var displayText = container.find('.display').val();
         expect(displayText).toBe('1');
+    });
+
+
+    it('can multiply three and three', function () {
+        calculator.multiply.andReturn("9");
+        container.find('#btn3').click();
+        container.find('#btnmultiply').click();
+        container.find('#btn3').click();
+        container.find('#btnequal').click();
+
+        var displayText = container.find('.display').val();
+        expect(displayText).toBe('9');
     });
 });

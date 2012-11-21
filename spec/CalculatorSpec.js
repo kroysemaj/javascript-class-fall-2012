@@ -10,4 +10,12 @@ describe('Calculator', function () {
         var actual = calculator.subtract(42, 11);
         expect(actual).toBe(31);
     });
+
+    it('can multiply 3 and 3', function () {
+        var calculator = new Calculator();
+        var actual = calculator.multiply(3, 3);
+        expect(actual).toBe(9);
+    });
+    
+    
 });
